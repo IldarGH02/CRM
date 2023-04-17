@@ -1,0 +1,26 @@
+@import '../../common/mixins.scss';
+@import '../../common/colorize.scss';
+
+.contacts__container {
+    padding: 50px 20px;
+
+    .contact__info {
+        @include _font(400, 16px, 20px, $textColor)
+    }
+
+    .actions {
+        text-align: center;
+
+        .contacts__actions {
+            cursor: pointer;
+
+            &:not(:last-child) {
+                margin-right: 20px;
+            }
+
+            &:hover {
+                transform: scale(1.15);
+            }
+        }
+    }    
+}

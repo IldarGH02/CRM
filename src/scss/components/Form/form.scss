@@ -1,0 +1,9 @@
+@import './FormInput/forminput.scss';
+
+.form {
+    .form__input {
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+@import '../../common/mixins.scss';
+@import '../../common/colorize.scss';
+
+.navigation {
+    width: 25%;
+    height: 100%;
+    background-color: $backgroundColor;
+    overflow: auto;
+
+    .navigation__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 70px 20px;
+
+        .navigation__header {
+            display: flex;
+            flex-direction: column;
+    
+            .navifation__logo {
+                margin-bottom: 90px;
+                text-align: center;
+                @include _font(700, 60px, 45px, $whiteColor);
+            }
+    
+            .navigation__nav {
+                display: flex;
+                flex-direction: column;
+
+                .navigation__link {
+                    text-decoration: none;
+                    @include _font(400, 25px, 35px, $whiteColor);
+                    &:hover {
+                        color: $hoverColor;
+                    };
+                    &:not(:last-child) {
+                        margin-bottom: 25px;
+                    }
+                }
+            }
+        }
+
+        .navigation__footer {
+            text-align: center;
+
+            .navigation__button {
+                &:hover {
+                    color: $hoverColor;
+                };
+
+                @include _font(400, 25px, 35px, $whiteColor);
+            }
+        }
+    }
+}

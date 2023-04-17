@@ -1,0 +1,12 @@
+@import '../../common/mixins.scss';
+@import '../../common/colorize.scss' ;
+
+.modal {
+    padding: 0 !important;
+
+    .modal__input {
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+@import '../../common/mixins.scss';
+@import '../../common/colorize.scss';
+
+
+.table {
+    border: 1px solid #333;
+
+    .contacts__table-head {
+        @include _font(500, 20px, 25px, $textColor)
+    }
+}
