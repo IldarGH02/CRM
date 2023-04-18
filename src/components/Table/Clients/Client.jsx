@@ -3,7 +3,7 @@ import { RiDeleteBin5Line } from "react-icons/ri"
 import { useDispatch } from "react-redux"
 import { removeContact } from "store/slices/contactsSlice"
 
-const Client = ({id, name, email, phone, countId}) => {
+const Client = ({id, name, email, phone, countId, handleShow}) => {
     const dispatch = useDispatch()
 
     const deleteContact = (id) => {
@@ -23,6 +23,7 @@ const Client = ({id, name, email, phone, countId}) => {
                 />
 
                 <AiFillEdit
+                    onClick={handleShow}
                     className="contacts__actions contact__edit"
                 />
             </td>

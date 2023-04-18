@@ -2,7 +2,7 @@ import Clients from "./Clients/Clients"
 
 import Table from 'react-bootstrap/Table';
 
-const ContactsTable = () => {
+const ContactsTable = (props) => {
     return (
         <Table striped bordered hover>
             <thead>
@@ -14,7 +14,9 @@ const ContactsTable = () => {
                     <th className="contacts__table-head">Actions</th>
                 </tr>
             </thead>
-            <Clients/>
+            <Clients
+                handleShow={props.handleShow}
+            />
         </Table>
     )   
 }

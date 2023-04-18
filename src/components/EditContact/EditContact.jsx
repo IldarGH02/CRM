@@ -1,17 +1,15 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { setContact } from "store/slices/contactsSlice"
+import { editContact } from "store/slices/contactsSlice"
 import Modal from 'react-bootstrap/Modal';
-import { nanoid } from "nanoid";
 
 import Input from "components/Input/Input"
 import CommonButton from "components/CommonButton/CommonButton"
 
-const ModalWindow = (props) => {
+const EditContact = (props) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const id = nanoid()
     const dispatch = useDispatch()
 
     const handleChangeName = (e) => {
@@ -29,12 +27,11 @@ const ModalWindow = (props) => {
         setPhone(target)
     }
     
-    const handlePush = (name, email, phone, id) => {
-        dispatch(setContact({
+    const handleEdit = (name, email, phone) => {
+        dispatch(editContact({
             name: name,
             email: email,
-            phone: phone,
-            id: id
+            phone: phone
         }))
         setEmail('')
         setName('')
@@ -43,7 +40,7 @@ const ModalWindow = (props) => {
 
     return (
         <div 
-            className="modal show"
+            className="modal show edit"
             style={{display: "block", position: "initial"}}
         >
             <Modal 
@@ -58,7 +55,7 @@ const ModalWindow = (props) => {
 
                 <Modal.Body>
                     <Input
-                        title='ФИО'
+                        title='Изменить ФИО'
                         type='text'
                         class='modal__input'
                         placeholder='Введите ФИО'
@@ -66,7 +63,7 @@ const ModalWindow = (props) => {
                         value={name}
                     />
                     <Input
-                        title='E-mail'
+                        title='Изменить E-mail'
                         type='email'
                         class='modal__input'
                         placeholder='Введите E-mail'
@@ -74,7 +71,7 @@ const ModalWindow = (props) => {
                         value={email}
                     />
                     <Input
-                        title='Phone'
+                        title='Изменить номер телефона'
                         type='tel'
                         class='modal__input'
                         placeholder='Введите номер телефона'
@@ -85,8 +82,8 @@ const ModalWindow = (props) => {
 
                 <Modal.Footer>
                     <CommonButton
-                            title='Добавить конаткт'
-                            handleClick={() => handlePush(name, email, phone, id)}
+                            title='Изменить данные'
+                            handleClick={() => handleEdit(name, email, phone)}
                             styles='primary'
                     />
                 </Modal.Footer>
@@ -95,4 +92,4 @@ const ModalWindow = (props) => {
     )
 }
 
-export default ModalWindow
+export default EditContact

@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     users: [],
-    filterContacts: []
+    filteredContacts: [],
+    searchValue: ''
 }
 
 const contactsSlice = createSlice({
@@ -17,13 +18,21 @@ const contactsSlice = createSlice({
                 id: action.payload.id                
             })
         },
+
         searchContact(state, action) {    
-            const filtered = [...state.users].filter((contact) => contact.name.includes(action.payload))  
+            const filtered = state.users.filter((contact) => contact.name.toLowerCase().includes(action.payload.toLowerCase()))
                 return {
                     ...state,
-                    users: action.payload.length > 0 ? filtered : [...state.users]
+                    filteredContacts: filtered,
+                    searchValue: action.payload                    
                 }
         },
+
+        editContact(state, action){
+            
+
+        },
+
         removeContact(state, action) {
             state.users = state.users.filter(contact => {
                 return contact.id !== action.payload.id
@@ -32,6 +41,6 @@ const contactsSlice = createSlice({
     }
 })
 
-export const {setContact, removeContact, searchContact} = contactsSlice.actions
+export const {setContact, removeContact, searchContact, editContact} = contactsSlice.actions
 
 export default contactsSlice.reducer;

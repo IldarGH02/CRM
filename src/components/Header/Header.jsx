@@ -1,6 +1,6 @@
 import changeToUpperCase from "utils/toUpperCase"
 import Input from "components/Input/Input"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { searchContact } from "store/slices/contactsSlice"
 
@@ -10,13 +10,9 @@ const Header = (props) => {
     const dispatch = useDispatch()
     
     const handleChange = (e) => {
-        const target = e.target.value
-        setValue(target)
+        dispatch(searchContact(e.target.value))
+        setValue(e.target.value)
     }
-
-    useEffect(() => {
-        dispatch(searchContact(value))
-    }, [value, dispatch])
 
     return (
         <header className="header">
@@ -26,7 +22,7 @@ const Header = (props) => {
                     type='text'
                     placeholder='Поиск по имени'
                     value={value}
-                    handleChange={(e) => handleChange(e, value)}
+                    handleChange={(e) => handleChange(e)}
                 />
                 <div className="header__user">{changeToUpperCase(props.user)}</div>
             </div>
